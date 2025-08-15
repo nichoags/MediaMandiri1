@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Media Mandiri - Creative Media Advertising</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .scale-hover {
+            transition: transform 0.3s ease;
+        }
+        
+        .scale-hover:hover {
+            transform: scale(1.05);
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        .brand-slide {
+            animation: brandSlide 20s linear infinite;
+        }
+        
+        @keyframes brandSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: timelineAppear 0.6s ease-out forwards;
+        }
+        
+        @keyframes timelineAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typewriter 3s steps(40, end);
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .page-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+        
+        .page-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 navbar-blur border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">MM</span>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold text-red-600">Media Mandiri</div>
+                        <div class="text-xs text-gray-600">Creative Media Advertising</div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" onclick="showPage('home')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Home</a>
+                    <a href="#" onclick="showPage('about')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">About Us</a>
+                    <a href="#" onclick="showPage('services')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Services</a>
+                    <a href="#" onclick="showPage('markets')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Markets</a>
+                    <a href="#" onclick="showPage('people')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">People</a>
+                    <a href="#" onclick="showPage('news')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">News</a>
+                    <a href="#" onclick="showPage('contact')" class="nav-link text-gray-700 hover:text-red-600 transition-colors duration-200 font-medium">Contact</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-red-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-4 py-2 space-y-2">
+                <a href="#" onclick="showPage('home')" class="block py-2 text-gray-700 hover:text-red-600">Home</a>
+                <a href="#" onclick="showPage('about')" class="block py-2 text-gray-700 hover:text-red-600">About Us</a>
+                <a href="#" onclick="showPage('services')" class="block py-2 text-gray-700 hover:text-red-600">Services</a>
+                <a href="#" onclick="showPage('markets')" class="block py-2 text-gray-700 hover:text-red-600">Markets</a>
+                <a href="#" onclick="showPage('people')" class="block py-2 text-gray-700 hover:text-red-600">People</a>
+                <a href="#" onclick="showPage('news')" class="block py-2 text-gray-700 hover:text-red-600">News</a>
+                <a href="#" onclick="showPage('contact')" class="block py-2 text-gray-700 hover:text-red-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-content" class="pt-16">
+        
+        <!-- HOME PAGE -->
+        <div id="home-page" class="page-content page-active">
+            <!-- Hero Section -->
+            <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute top-20 left-20 w-32 h-32 bg-red-600 rounded-full floating"></div>
+                    <div class="absolute top-40 right-32 w-24 h-24 bg-yellow-500 rounded-full floating" style="animation-delay: 1s;"></div>
+                    <div class="absolute bottom-32 left-1/4 w-20 h-20 bg-red-600 rounded-full floating" style="animation-delay: 2s;"></div>
+                </div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="slide-in-left">
+                            <div class="mb-6">
+                                <span class="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
+                                    International Creative Agency
+                                </span>
+                                <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                                    <span class="text-gray-900">Creative</span>
+                                    <span class="text-red-600 typewriter block">Media Solutions</span>
+                                </h1>
+                                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                                    Transforming brands through innovative advertising strategies and cutting-edge media solutions that captivate global audiences.
+                                </p>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-4">
+                                <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 glow-effect scale-hover">
+                                    Discover Our Work
+                                </button>
+                                <button class="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 scale-hover">
+                                    Get Started
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-in-right">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                                     alt="Creative Team" class="w-full rounded-2xl shadow-2xl floating">
+                                <div class="absolute -bottom-6 -left-6 bg-yellow-500 text-white p-6 rounded-xl shadow-lg">
+                                    <div class="text-3xl font-bold">15+</div>
+                                    <div class="text-sm">Years Experience</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Us Preview -->
+            <section class="py-20 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16 fade-in-up">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-6">About Media Mandiri</h2>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            A leading international creative media advertising company dedicated to delivering exceptional results through innovative strategies and creative excellence.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 scale-hover fade-in-up">
+                            <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                                <i class="fas fa-rocket text-red-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Innovation</h3>
+                            <p class="text-gray-600">Cutting-edge solutions that push the boundaries of creative advertising.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 scale-hover fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+                                <i class="fas fa-globe text-yellow-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Global Reach</h3>
+                            <p class="text-gray-600">International presence with local expertise in key markets worldwide.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 scale-hover fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                                <i class="fas fa-award text-red-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Excellence</h3>
+                            <p class="text-gray-600">Award-winning campaigns that deliver measurable results for our clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Services -->
+            <section class="py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16 fade-in-up">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Services</h2>
+                        <p class="text-xl text-gray-600">Comprehensive media solutions tailored to your brand's unique needs</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-red-600 scale-hover fade-in-up">
+                            <i class="fas fa-bullhorn text-red-600 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+                            <h3 class="text-lg font-semibold mb-3">Digital Advertising</h3>
+                            <p class="text-gray-600 text-sm">Strategic digital campaigns across all major platforms</p>
+                        </div>
+                        
+                        <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-yellow-500 scale-hover fade-in-up" style="animation-delay: 0.1s;">
+                            <i class="fas fa-tv text-yellow-600 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+                            <h3 class="text-lg font-semibold mb-3">TV & Radio</h3>
+                            <p class="text-gray-600 text-sm">Traditional media with modern creative approaches</p>
+                        </div>
+                        
+                        <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-red-600 scale-hover fade-in-up" style="animation-delay: 0.2s;">
+                            <i class="fas fa-paint-brush text-red-600 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+                            <h3 class="text-lg font-semibold mb-3">Creative Design</h3>
+                            <p class="text-gray-600 text-sm">Award-winning creative concepts and executions</p>
+                        </div>
+                        
+                        <div class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-l-4 border-yellow-500 scale-hover fade-in-up" style="animation-delay: 0.3s;">
+                            <i class="fas fa-chart-line text-yellow-600 text-3xl mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+                            <h3 class="text-lg font-semibold mb-3">Media Planning</h3>
+                            <p class="text-gray-600 text-sm">Data-driven strategies for maximum impact</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Markets -->
+            <section class="py-20 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16 fade-in-up">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-6">Our Markets</h2>
+                        <p class="text-xl text-gray-600">Serving diverse industries with specialized expertise</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 scale-hover fade-in-up">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1426&q=80" 
+                                 alt="Automotive" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-3">Automotive</h3>
+                                <p class="text-gray-600">Premium campaigns for leading automotive brands</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 scale-hover fade-in-up" style="animation-delay: 0.2s;">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Technology" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-3">Technology</h3>
+                                <p class="text-gray-600">Innovative solutions for tech companies</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 scale-hover fade-in-up" style="animation-delay: 0.4s;">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Healthcare" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-3">Healthcare</h3>
+                                <p class="text-gray-600">Trusted partner for healthcare communications</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Premium Media Brands Slider -->
+            <section class="py-20 bg-red-600 text-white overflow-hidden">
+                <div class="mb-16 text-center fade-in-up">
+                    <h2 class="text-4xl font-bold mb-6">Our Premium Media Brands</h2>
+                    <p class="text-xl text-red-100">Trusted partnerships with industry leaders</p>
+                </div>
+                
+                <div class="relative">
+                    <div class="flex brand-slide">
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+1" alt="Brand 1" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+2" alt="Brand 2" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+3" alt="Brand 3" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+4" alt="Brand 4" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+5" alt="Brand 5" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+6" alt="Brand 6" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+1" alt="Brand 1" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-8">
+                            <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-blur-sm">
+                                <img src="https://via.placeholder.com/200x80/ffffff/000000?text=BRAND+2" alt="Brand 2" class="h-16 mx-auto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT US PAGE -->
+        <div id="about-page" class="page-content hidden">
+            <section class="py-20 mt-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">About Media Mandiri</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Leading the evolution of creative media advertising with innovation, excellence, and global expertise since 2008.
+                        </p>
+                    </div>
+
+                    <!-- Timeline -->
+                    <div class="relative">
+                        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300"></div>
+                        
+                        <div class="timeline-item mb-16" style="animation-delay: 0.2s;">
+                            <div class="flex items-center mb-8">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                                        <h3 class="text-2xl font-bold text-red-600 mb-2">2008</h3>
+                                        <h4 class="text-lg font-semibold mb-3">Foundation</h4>
+                                        <p class="text-gray-600">PT. Media Mandiri was established with a vision to revolutionize creative advertising in Indonesia and beyond.</p>
+                                    </div>
+                                </div>
+                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-600 rounded-full"></div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item mb-16" style="animation-delay: 0.4s;">
+                            <div class="flex items-center mb-8">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full"></div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                                        <h3 class="text-2xl font-bold text-yellow-600 mb-2">2012</h3>
+                                        <h4 class="text-lg font-semibold mb-3">International Expansion</h4>
+                                        <p class="text-gray-600">Expanded operations to Malaysia and Singapore, establishing our presence in Southeast Asia.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item mb-16" style="animation-delay: 0.6s;">
+                            <div class="flex items-center mb-8">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                                        <h3 class="text-2xl font-bold text-red-600 mb-2">2015</h3>
+                                        <h4 class="text-lg font-semibold mb-3">Digital Revolution</h4>
+                                        <p class="text-gray-600">Pioneered digital advertising solutions and became the first agency in the region to offer integrated omnichannel campaigns.</p>
+                                    </div>
+                                </div>
+                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-600 rounded-full"></div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item mb-16" style="animation-delay: 0.8s;">
+                            <div class="flex items-center mb-8">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full"></div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                                        <h3 class="text-2xl font-bold text-yellow-600 mb-2">2018</h3>
+                                        <h4 class="text-lg font-semibold mb-3">Award Recognition</h4>
+                                        <p class="text-gray-600">Won multiple international awards including Best Creative Agency Asia Pacific and Innovation in Advertising Excellence.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item mb-16" style="animation-delay: 1s;">
+                            <div class="flex items-center mb-8">
+                                <div class="w-1/2 pr-8 text-right">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                                        <h3 class="text-2xl font-bold text-red-600 mb-2">2021</h3>
+                                        <h4 class="text-lg font-semibold mb-3">Global Network</h4>
+                                        <p class="text-gray-600">Established offices in Tokyo, Hong Kong, and Sydney, creating a comprehensive Asia-Pacific network.</p>
+                                    </div>
+                                </div>
+                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-600 rounded-full"></div>
+                                <div class="w-1/2 pl-8"></div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item mb-16" style="animation-delay: 1.2s;">
+                            <div class="flex items-center mb-8">
+                                <div class="w-1/2 pr-8"></div>
+                                <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full"></div>
+                                <div class="w-1/2 pl-8">
+                                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                                        <h3 class="text-2xl font-bold text-yellow-600 mb-2">2024</h3>
+                                        <h4 class="text-lg font-semibold mb-3">AI Integration</h4>
+                                        <p class="text-gray-600">Launched AI-powered creative tools and data analytics platform, setting new industry standards for personalized advertising.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SERVICES PAGE -->
+        <div id="services-page" class="page-content hidden">
+            <section class="py-20 mt-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">Our Services</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Comprehensive media solutions designed to elevate your brand and drive meaningful engagement with your audience.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" 
+                                 alt="Digital Advertising" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-bullhorn text-red-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Digital Advertising</h3>
+                                </div>
+                                <p class="text-gray-600 mb-6">Strategic digital campaigns across all major platforms including social media, search engines, and programmatic advertising.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Social Media Campaigns</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Search Engine Marketing</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Programmatic Advertising</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Performance Analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" 
+                                 alt="Creative Design" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-paint-brush text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Creative Design</h3>
+                                </div>
+                                <p class="text-gray-600 mb-6">Award-winning creative concepts and executions that capture attention and drive brand recognition.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Brand Identity Design</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Video Production</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Print & Digital Assets</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Interactive Experiences</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                 alt="Media Planning" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-chart-line text-red-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Media Planning</h3>
+                                </div>
+                                <p class="text-gray-600 mb-6">Data-driven strategies that optimize media spend and maximize campaign effectiveness across all channels.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Audience Research</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Media Mix Optimization</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Budget Allocation</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Campaign Monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                            <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="TV & Radio" class="w-full h-64 object-cover">
+                            <div class="p-8">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-tv text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">TV & Radio</h3>
+                                </div>
+                                <p class="text-gray-600 mb-6">Traditional media with modern creative approaches that reach mass audiences effectively.</p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Commercial Production</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Media Buying</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Content Strategy</li>
+                                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Audience Measurement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- MARKETS PAGE -->
+        <div id="markets-page" class="page-content hidden">
+            <section class="py-20 mt-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">Our Markets</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Serving diverse industries across multiple sectors with specialized expertise and deep market knowledge.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1426&q=80" 
+                                     alt="Automotive" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="fas fa-car text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Automotive</h3>
+                                <p class="text-gray-600 mb-4">Premium campaigns for leading automotive brands, showcasing innovation and performance.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Luxury Cars</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Motorcycles</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">EV Solutions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Technology" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="fas fa-laptop text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Technology</h3>
+                                <p class="text-gray-600 mb-4">Innovative solutions for tech companies, from startups to global enterprises.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Software</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Fintech</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">AI & ML</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Healthcare" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="fas fa-heartbeat text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Healthcare</h3>
+                                <p class="text-gray-600 mb-4">Trusted partner for healthcare communications with sensitivity and expertise.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Pharmaceuticals</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Medical Devices</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Health Tech</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                     alt="Retail" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="fas fa-shopping-cart text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Retail & E-commerce</h3>
+                                <p class="text-gray-600 mb-4">Driving sales and brand loyalty through strategic retail marketing campaigns.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Fashion</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Electronics</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Marketplace</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                     alt="Financial Services" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="fas fa-university text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Financial Services</h3>
+                                <p class="text-gray-600 mb-4">Building trust and credibility for banks, insurance, and investment companies.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Banking</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Insurance</span>
+                                    <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm">Investment</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                     alt="Travel & Tourism" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <i class="fas fa-plane text-white text-4xl"></i>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Travel & Tourism</h3>
+                                <p class="text-gray-600 mb-4">Inspiring wanderlust and driving bookings through compelling travel marketing.</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Airlines</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Hotels</span>
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">Destinations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PEOPLE PAGE -->
+        <div id="people-page" class="page-content hidden">
+            <section class="py-20 mt-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">Our People</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Meet the talented individuals who drive innovation and creativity at Media Mandiri.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                     alt="CEO" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i class="fab fa-linkedin text-3xl mb-2"></i>
+                                        <p>Connect</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Michael Chen</h3>
+                                <p class="text-red-600 font-semibold mb-4">Chief Executive Officer</p>
+                                <p class="text-gray-600">Visionary leader with 20+ years in advertising, driving strategic growth and innovation across global markets.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b332e234?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                     alt="Creative Director" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i class="fab fa-linkedin text-3xl mb-2"></i>
+                                        <p>Connect</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Sarah Williams</h3>
+                                <p class="text-yellow-600 font-semibold mb-4">Creative Director</p>
+                                <p class="text-gray-600">Award-winning creative professional specializing in breakthrough campaigns that resonate with diverse audiences.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Strategy Director" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i class="fab fa-linkedin text-3xl mb-2"></i>
+                                        <p>Connect</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">David Rodriguez</h3>
+                                <p class="text-red-600 font-semibold mb-4">Strategy Director</p>
+                                <p class="text-gray-600">Data-driven strategist with expertise in consumer insights and market analysis across Asia-Pacific region.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Digital Director" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i class="fab fa-linkedin text-3xl mb-2"></i>
+                                        <p>Connect</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Emily Zhang</h3>
+                                <p class="text-yellow-600 font-semibold mb-4">Digital Director</p>
+                                <p class="text-gray-600">Digital innovation expert leading cutting-edge technology integration and performance optimization.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                     alt="Account Director" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-red-600 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i class="fab fa-linkedin text-3xl mb-2"></i>
+                                        <p>Connect</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">James Thompson</h3>
+                                <p class="text-red-600 font-semibold mb-4">Account Director</p>
+                                <p class="text-gray-600">Client relationship specialist ensuring seamless project delivery and long-term partnership success.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                     alt="Media Director" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div class="text-center text-white">
+                                        <i class="fab fa-linkedin text-3xl mb-2"></i>
+                                        <p>Connect</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Lisa Kumar</h3>
+                                <p class="text-yellow-600 font-semibold mb-4">Media Director</p>
+                                <p class="text-gray-600">Media planning expert with deep knowledge of regional markets and audience behavior patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-2xl p-12 text-center">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Join Our Team</h2>
+                        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                            We're always looking for talented individuals who share our passion for creative excellence and innovation.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 scale-hover">
+                                View Open Positions
+                            </button>
+                            <button class="border-2 border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 scale-hover">
+                                Submit Resume
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- NEWS PAGE -->
+        <div id="news-page" class="page-content hidden">
+            <section class="py-20 mt-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">Latest News</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Stay updated with our latest campaigns, awards, and industry insights.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2">
+                            <article class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 mb-8">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                     alt="Award News" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <div class="flex items-center mb-4">
+                                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">Awards</span>
+                                        <span class="text-gray-500 ml-4">August 10, 2025</span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Media Mandiri Wins Grand Prix at Cannes Lions 2025</h2>
+                                    <p class="text-gray-600 mb-6">Our groundbreaking campaign for sustainable transportation has been awarded the Grand Prix for Outdoor advertising at this year's Cannes Lions International Festival of Creativity.</p>
+                                    <button class="text-red-600 hover:text-red-700 font-semibold">Read Full Story →</button>
+                                </div>
+                            </article>
+
+                            <article class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 mb-8">
+                                <img src="https://images.unsplash.com/photo-1553484771-371a605b060b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Expansion News" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <div class="flex items-center mb-4">
+                                        <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium">Expansion</span>
+                                        <span class="text-gray-500 ml-4">August 5, 2025</span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-gray-900 mb-4">New Office Opening in Mumbai</h2>
+                                    <p class="text-gray-600 mb-6">We're excited to announce the opening of our new office in Mumbai, expanding our presence in the Indian market and serving local clients with dedicated teams.</p>
+                                    <button class="text-yellow-600 hover:text-yellow-700 font-semibold">Read Full Story →</button>
+                                </div>
+                            </article>
+
+                            <article class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                     alt="Campaign News" class="w-full h-64 object-cover">
+                                <div class="p-8">
+                                    <div class="flex items-center mb-4">
+                                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">Campaign</span>
+                                        <span class="text-gray-500 ml-4">July 28, 2025</span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Successful Launch of EV Campaign Series</h2>
+                                    <p class="text-gray-600 mb-6">Our integrated campaign for electric vehicle adoption has generated significant buzz across social media platforms, achieving 50M+ impressions in the first week.</p>
+                                    <button class="text-red-600 hover:text-red-700 font-semibold">Read Full Story →</button>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="lg:col-span-1">
+                            <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Recent Awards</h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-red-600 pl-4">
+                                        <h4 class="font-semibold text-gray-900">Cannes Lions Grand Prix</h4>
+                                        <p class="text-gray-600 text-sm">Outdoor Advertising Excellence</p>
+                                    </div>
+                                    <div class="border-l-4 border-yellow-500 pl-4">
+                                        <h4 class="font-semibold text-gray-900">D&AD Pencil</h4>
+                                        <p class="text-gray-600 text-sm">Digital Innovation Campaign</p>
+                                    </div>
+                                    <div class="border-l-4 border-red-600 pl-4">
+                                        <h4 class="font-semibold text-gray-900">Asia Marketing Excellence</h4>
+                                        <p class="text-gray-600 text-sm">Best Regional Campaign</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Newsletter</h3>
+                                <p class="text-gray-600 mb-6">Subscribe to get the latest updates on our campaigns and industry insights.</p>
+                                <form class="space-y-4">
+                                    <input type="email" placeholder="Your email address" 
+                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none">
+                                    <button class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg font-semibold transition-colors duration-200">
+                                        Subscribe
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact-page" class="page-content hidden">
+            <section class="py-20 mt-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                            Ready to start your next creative project? Get in touch with our team of experts.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-16">
+                        <div>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-8">Let's Start a Conversation</h2>
+                            <form class="space-y-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold mb-2">First Name</label>
+                                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-200">
+                                    </div>
+                                    <div>
+                                        <label class="block text-gray-700 font-semibold mb-2">Last Name</label>
+                                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-200">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Email Address</label>
+                                    <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-200">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Company</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-200">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Services Interested</label>
+                                    <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-200">
+                                        <option>Digital Advertising</option>
+                                        <option>Creative Design</option>
+                                        <option>Media Planning</option>
+                                        <option>TV & Radio</option>
+                                        <option>Full Service</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-gray-700 font-semibold mb-2">Message</label>
+                                    <textarea rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none transition-colors duration-200" 
+                                              placeholder="Tell us about your project..."></textarea>
+                                </div>
+                                
+                                <button class="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded-lg font-semibold transition-all duration-300 glow-effect scale-hover">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+
+                        <div>
+                            <div class="bg-gray-50 rounded-2xl p-8 mb-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Global Offices</h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="border-l-4 border-red-600 pl-6">
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">Jakarta (Headquarters)</h4>
+                                        <p class="text-gray-600 mb-2">Jl. Sudirman No. 123, Jakarta 10220, Indonesia</p>
+                                        <p class="text-gray-600">+62 21 1234 5678</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 border-yellow-500 pl-6">
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">Singapore</h4>
+                                        <p class="text-gray-600 mb-2">Marina Bay Financial Centre, Singapore 018989</p>
+                                        <p class="text-gray-600">+65 6789 0123</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 border-red-600 pl-6">
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">Tokyo</h4>
+                                        <p class="text-gray-600 mb-2">Shibuya, Tokyo 150-0002, Japan</p>
+                                        <p class="text-gray-600">+81 3 1234 5678</p>
+                                    </div>
+                                    
+                                    <div class="border-l-4 border-yellow-500 pl-6">
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">Sydney</h4>
+                                        <p class="text-gray-600 mb-2">Circular Quay, Sydney NSW 2000, Australia</p>
+                                        <p class="text-gray-600">+61 2 9876 5432</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-xl p-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Quick Connect</h3>
+                                <div class="space-y-4">
+                                    <a href="mailto:hello@mediamandiri.com" class="flex items-center text-gray-600 hover:text-red-600 transition-colors duration-200">
+                                        <i class="fas fa-envelope text-xl mr-4"></i>
+                                        hello@mediamandiri.com
+                                    </a>
+                                    <a href="tel:+6221234567" class="flex items-center text-gray-600 hover:text-red-600 transition-colors duration-200">
+                                        <i class="fas fa-phone text-xl mr-4"></i>
+                                        +62 21 1234 5678
+                                    </a>
+                                    <div class="flex items-center text-gray-600">
+                                        <i class="fas fa-clock text-xl mr-4"></i>
+                                        Mon - Fri: 9:00 AM - 6:00 PM (GMT+7)
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8 pt-8 border-t border-gray-200">
+                                    <h4 class="text-lg font-semibold text-gray-900 mb-4">Follow Us</h4>
+                                    <div class="flex space-x-4">
+                                        <a href="#" class="w-12 h-12 bg-red-600 text-white rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors duration-200">
+                                            <i class="fab fa-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="w-12 h-12 bg-yellow-500 text-white rounded-lg flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="w-12 h-12 bg-red-600 text-white rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors duration-200">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                        <a href="#" class="w-12 h-12 bg-yellow-500 text-white rounded-lg flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200">
+                                            <i class="fab fa-facebook"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">MM</span>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold text-red-600">Media Mandiri</div>
+                            <div class="text-xs text-gray-400">Creative Media Advertising</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Leading international creative media advertising company delivering exceptional results through innovation.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Digital Advertising</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Creative Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Media Planning</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">TV & Radio</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="showPage('about')" class="hover:text-white transition-colors duration-200">About Us</a></li>
+                        <li><a href="#" onclick="showPage('people')" class="hover:text-white transition-colors duration-200">Our Team</a></li>
+                        <li><a href="#" onclick="showPage('news')" class="hover:text-white transition-colors duration-200">News</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Jakarta, Indonesia</li>
+                        <li>+62 21 1234 5678</li>
+                        <li>hello@mediamandiri.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mt-8 text-center text-gray-400">
+                <p>&copy; 2025 PT. Media Mandiri. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.add('hidden');
+                page.classList.remove('page-active');
+                page.classList.add('page-transition');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageName + '-page');
+            if (targetPage) {
+                setTimeout(() => {
+                    targetPage.classList.remove('hidden');
+                    targetPage.classList.add('page-active');
+                    targetPage.classList.remove('page-transition');
+                }, 100);
+            }
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('text-red-600');
+                link.classList.add('text-gray-700');
+            });
+            
+            // Hide mobile menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .timeline-item');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add form submission logic here
+                alert('Thank you for your message! We will get back to you soon.');
+            });
+        });
+
+        // Add loading animation on page transitions
+        function addLoadingEffect() {
+            const loader = document.createElement('div');
+            loader.className = 'fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50';
+            loader.innerHTML = `
+                <div class="text-center">
+                    <div class="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+                    <p class="text-gray-600">Loading...</p>
+                </div>
+            `;
+            document.body.appendChild(loader);
+            
+            setTimeout(() => {
+                loader.remove();
+            }, 500);
+        }
+
+        // Enhanced page navigation with loading effect
+        const originalShowPage = showPage;
+        showPage = function(pageName) {
+            addLoadingEffect();
+            setTimeout(() => {
+                originalShowPage(pageName);
+            }, 300);
+        };
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-gradient');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Auto-advance brand slider with pause on hover
+        let brandSliderInterval;
+        const startBrandSlider = () => {
+            const slider = document.querySelector('.brand-slide');
+            if (slider) {
+                brandSliderInterval = setInterval(() => {
+                    // Reset animation
+                    slider.style.animation = 'none';
+                    setTimeout(() => {
+                        slider.style.animation = 'brandSlide 20s linear infinite';
+                    }, 10);
+                }, 20000);
+            }
+        };
+
+        const stopBrandSlider = () => {
+            if (brandSliderInterval) {
+                clearInterval(brandSliderInterval);
+            }
+        };
+
+        // Start slider on load
+        document.addEventListener('DOMContentLoaded', startBrandSlider);
+
+        // Pause slider on hover
+        document.querySelector('.brand-slide')?.addEventListener('mouseenter', stopBrandSlider);
+        document.querySelector('.brand-slide')?.addEventListener('mouseleave', startBrandSlider);
+
+        // Add dynamic counter animations for statistics
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current);
+                }, 20);
+            });
+        }
+
+        // Lazy loading for images
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        // Enhanced search functionality (if needed)
+        function addSearchFunctionality() {
+            const searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.placeholder = 'Search...';
+            searchInput.className = 'hidden md:block px-4 py-2 rounded-lg border border-gray-300 focus:border-red-600 focus:outline-none';
+            
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase();
+                // Add search logic here
+                console.log('Searching for:', query);
+            });
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close mobile menu
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+            
+            // Navigate pages with arrow keys (optional)
+            if (e.altKey) {
+                const pages = ['home', 'about', 'services', 'markets', 'people', 'news', 'contact'];
+                const currentPage = document.querySelector('.page-content:not(.hidden)').id.replace('-page', '');
+                const currentIndex = pages.indexOf(currentPage);
+                
+                if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    showPage(pages[currentIndex - 1]);
+                } else if (e.key === 'ArrowRight' && currentIndex < pages.length - 1) {
+                    showPage(pages[currentIndex + 1]);
+                }
+            }
+        });
+
+        // Add smooth reveal animations for timeline items
+        function revealTimelineItems() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.animationDelay = `${index * 0.2}s`;
+                    item.classList.add('timeline-item');
+                }, index * 100);
+            });
+        }
+
+        // Add performance optimization
+        function optimizePerformance() {
+            // Debounce scroll events
+            let scrollTimeout;
+            const originalScrollHandler = window.onscroll;
+            window.onscroll = function() {
+                if (scrollTimeout) clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (originalScrollHandler) originalScrollHandler();
+                }, 10);
+            };
+        }
+
+        // Initialize all enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            revealTimelineItems();
+            optimizePerformance();
+            animateCounters();
+        });
+
+        // Add touch gesture support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 100;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                const pages = ['home', 'about', 'services', 'markets', 'people', 'news', 'contact'];
+                const currentPage = document.querySelector('.page-content:not(.hidden)').id.replace('-page', '');
+                const currentIndex = pages.indexOf(currentPage);
+                
+                if (diff > 0 && currentIndex < pages.length - 1) {
+                    // Swipe left - next page
+                    showPage(pages[currentIndex + 1]);
+                } else if (diff < 0 && currentIndex > 0) {
+                    // Swipe right - previous page
+                    showPage(pages[currentIndex - 1]);
+                }
+            }
+        }
+
+        // Add dynamic favicon update
+        function updateFavicon() {
+            const favicon = document.querySelector('link[rel="icon"]');
+            if (!favicon) {
+                const newFavicon = document.createElement('link');
+                newFavicon.rel = 'icon';
+                newFavicon.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23dc2626"/><text y="70" font-size="60" fill="white">MM</text></svg>';
+                document.head.appendChild(newFavicon);
+            }
+        }
+
+        // Initialize favicon
+        updateFavicon();
+
+        console.log('🚀 Media Mandiri Website Loaded Successfully!');
+        console.log('🎨 Features: Responsive Design, Smooth Animations, Page Transitions');
+        console.log('📱 Mobile: Touch Gestures, Mobile Menu, Optimized Performance');
+        console.log('⚡ Interactive: Hover Effects, Form Handling, Keyboard Navigation');
+    </script>
+</body>
+</html>
